@@ -11,6 +11,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - mvn package
+      - ll
+      - pwd
       
 reports: #New
   SurefireReports: # CodeBuild will create a report group called "SurefireReports".

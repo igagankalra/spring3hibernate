@@ -1,0 +1,23 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo Build Started on `date`
+      - mvn validate
+      - mvn test
+      
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package
+      
+reports: #New
+  SurefireReports: # CodeBuild will create a report group called "SurefireReports".
+    files: #Store all of the files
+      - '**/*'
+    base-directory: 'target/surefire-reports'
+
+artifacts:
+  files:
+    - target/*.war
